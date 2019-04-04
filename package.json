@@ -1,0 +1,9 @@
+{
+    "name": "8-puzzle-algorithm",
+    "version": "1.0.0",
+    "description": "8-puzzle algorithm",
+    "main": "main.js",
+    "scripts": {
+      "start": "node ./main.js"
+    }
+}
