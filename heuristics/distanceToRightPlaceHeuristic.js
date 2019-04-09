@@ -1,4 +1,4 @@
-import { solvedPuzzle } from './matrixes';
+import { solvedPuzzle } from '../matrixes';
 
 function distanceToRightPlace(number, i, j) {
 	var { x, y } = solvedPuzzle.getPosition(number);

@@ -2,9 +2,9 @@
     "name": "8-puzzle-algorithm",
     "version": "1.0.0",
     "description": "8-puzzle algorithm",
-    "main": "main.js",
+    "main": "run.js",
     "scripts": {
-        "start": "babel-node ./main.js"
+        "start": "babel-node ./run.js"
     },
     "dependencies": {
         "table": "^5.2.3"

@@ -1,5 +1,5 @@
 import { table } from 'table';
-import { heuristic } from './distanceToRightPlaceHeuristic';
+import { heuristic } from './heuristics/distanceToRightPlaceHeuristic';
 import { sleep, isEqual } from './helpers';
 import { toSolvePuzzle } from './matrixes'
 
@@ -20,10 +20,10 @@ async function teste() {
             console.log(table(lower.puzzle.matrix))
             let parent = lower.parent
             let t = 0;
-            do{
+            do {
                 t++;
-                parent=parent.parent;
-            }while(parent)
+                parent = parent.parent;
+            } while (parent)
             console.log(t)
             return;
         }

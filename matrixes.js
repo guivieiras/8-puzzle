@@ -1,4 +1,4 @@
-import Puzzle from './main'
+import Puzzle from './puzzle'
 export const solvedPuzzle = new Puzzle(
     [
         [1, 2, 3],
