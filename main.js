@@ -1,48 +1,77 @@
-var solvedMatrix = 
-[
-	[1,2,3],
-	[4,5,6],
-	[7,8,0]
-]
+export default class Puzzle {
+	constructor(matrix) {
+		this.matrix = matrix;
+	}
 
-var randomMatrix =  
-[
-	[8,3,6],
-	[0,1,2],
-	[4,7,5]
-]
+	getNumberRowAndColumn(input) {
+		for (var [row, arrays] of this.matrix.entries()) {
+			for (var [column, number] of arrays.entries()) {
+				if (number == input)
+					return { row, column }
+			}
+		}
+		return null;
+	}
 
-var randomMatrixx =  
-[
-	[0,8,7],
-	[6,5,4],
-	[3,2,1]
-]
+	getAllPossibleMatrixes() {
+		var zeroPosition = this.getNumberRowAndColumn(0);
+		var matrixes = [
+			this.moveLeft(zeroPosition),
+			this.moveRight(zeroPosition),
+			this.moveDown(zeroPosition),
+			this.moveUp(zeroPosition)
+		]
+		return matrixes.filter(o => !!o)
+	}
 
+	moveLeft(position) {
+		if (position.column == 0) {
+			return null;
+		}
+		return this.move(position, { row: position.row, column: position.column - 1 });
+	}
 
-var sum = 0;
-for (var [i, arrays] of randomMatrix.entries()){
-	for (var [j, number] of arrays.entries()){
-		var {distance, number} = distanceToRightPlace(number, i, j)
-		console.log({distance, number})
-		sum += distance;
+	moveRight(position) {
+		if (position.column == 2) {
+			return null;
+		}
+		return this.move(position, { row: position.row, column: position.column + 1 });
+	}
+	moveUp(position) {
+		if (position.row == 0) {
+			return null;
+		}
+		return this.move(position, { row: position.row - 1, column: position.column });
+	}
+	moveDown(position) {
+		if (position.row == 2) {
+			return null;
+		}
+		return this.move(position, { row: position.row + 1, column: position.column });
+	}
+
+	cloneMatrix() {
+		return JSON.parse(JSON.stringify(this.matrix));
+	}
+
+	move(oldPosition, newPosition) {
+		let matrix = this.cloneMatrix();
+		var number = matrix[oldPosition.row][oldPosition.column];
+		var temp = matrix[newPosition.row][newPosition.column];
+		matrix[newPosition.row][newPosition.column] = number;
+		matrix[oldPosition.row][oldPosition.column] = temp;
+		return new Puzzle(matrix);
+	}
+	getMatrix() {
+		return this.matrix;
+	}
+	getPosition(input) {
+		for (var [x, arrays] of this.matrix.entries()) {
+			for (var [y, number] of arrays.entries()) {
+				if (number == input)
+					return { x, y }
+			}
+		}
+		return null;
 	}
 }
-console.log(sum)
-
-function distanceToRightPlace(number, i, j){
-	var {row, column} = getLineAndRow(number);
-	var distance = Math.abs(i - row) + Math.abs(j - column)
-	return {distance, number};
-}
-
-function getLineAndRow(input){
-	for (var [row, arrays] of solvedMatrix.entries()){
-		for (var [column, number] of arrays.entries()){
-			if (number == input)
-				return {row, column }
-		}
-	}	
-	return null;
-}
-
