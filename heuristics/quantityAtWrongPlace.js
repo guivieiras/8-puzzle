@@ -1,6 +1,6 @@
 import { solvedPuzzle } from '../matrixes';
 
-function isAtRightPlace(number, i, j) {
+export function isAtRightPlace(number, i, j) {
 	var { x, y } = solvedPuzzle.getPosition(number);
 	return x == i && j == y;
 }

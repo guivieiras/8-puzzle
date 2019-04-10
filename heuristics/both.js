@@ -1,12 +1,6 @@
 import { solvedPuzzle } from '../matrixes';
-
-export function distanceToRightPlace(number, i, j) {
-	var { x, y } = solvedPuzzle.getPosition(number);
-    var distance = Math.abs(i - x) + Math.abs(j - y);
-    if (!number)
-        distance = 0;
-	return { distance, number };
-}
+import {distanceToRightPlace } from './distanceToRightPlaceHeuristic';
+import {isAtRightPlace } from './quantityAtWrongPlace'
 
 export function heuristic(puzzle) {
 	var sum = 0;
@@ -14,7 +8,8 @@ export function heuristic(puzzle) {
 	for (var [i, arrays] of puzzle.matrix.entries()) {
 		for (var [j, number] of arrays.entries()) {
 			var { distance, number } = distanceToRightPlace(number, i, j)
-			sum += distance;
+            sum += distance;
+            sum += isAtRightPlace(number, i, j) ? 0 : 1;
 		}
 	}
 	return sum;
