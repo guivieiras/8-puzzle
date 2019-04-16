@@ -4,12 +4,10 @@ import { sleep, isEqual } from './helpers';
 import { toSolvePuzzle } from './matrixes'
 
 var openNodes = [{ puzzle: toSolvePuzzle, heuristic: heuristic(toSolvePuzzle), parent: null }]
-var biggestDronteira = 1;
+var maiorFronteira = 1;
 var closedNodes = []
 async function teste() {
-    while (solved != 0) {
-        var solved = Infinity;
-
+    while (true) {
         let lower = openNodes.reduce((prev, curr) => prev.final < curr.final ? prev : curr)
         closedNodes.push(lower);
         openNodes = openNodes.filter(i => i != lower);
@@ -22,7 +20,7 @@ async function teste() {
             console.log({ closed: closedNodes.length, open: openNodes.length })
             console.log(table(lower.puzzle.matrix))
             console.log(lower)
-            console.log(biggestDronteira)
+            console.log(maiorFronteira)
             return;
         }
         console.log(lower.heuristic)
@@ -36,7 +34,7 @@ async function teste() {
                 openNodes.push(obj)
             }
         }
-        biggestDronteira = Math.max(openNodes.length, biggestDronteira);
+        maiorFronteira = Math.max(openNodes.length, maiorFronteira);
     }
 }
 function getPathSize(obj) {
