@@ -5,7 +5,7 @@ export function distanceToRightPlace(number, i, j) {
     var distance = Math.abs(i - x) + Math.abs(j - y);
     if (!number)
         distance = 0;
-	return { distance, number };
+	return distance;
 }
 
 export function heuristic(puzzle) {
@@ -13,8 +13,7 @@ export function heuristic(puzzle) {
 
 	for (var [i, arrays] of puzzle.matrix.entries()) {
 		for (var [j, number] of arrays.entries()) {
-			var { distance, number } = distanceToRightPlace(number, i, j)
-			sum += distance;
+			sum += distanceToRightPlace(number, i, j);
 		}
 	}
 	return sum;

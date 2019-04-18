@@ -4,7 +4,8 @@
     "description": "8-puzzle algorithm",
     "main": "run.js",
     "scripts": {
-        "start": "babel-node ./run.js"
+        "start": "babel-node ./run.js",
+        "build": "babel ./run.js --out-dir dist"
     },
     "dependencies": {
         "table": "^5.2.3"

@@ -1,5 +1,6 @@
 import { table } from 'table';
-import { heuristic } from './heuristics/quantityAtWrongPlace';
+//Para alternar entre heurísticas, 
+import { heuristic } from './heuristics/distanceToRightPlaceHeuristic';
 import { sleep, isEqual } from './helpers';
 import { toSolvePuzzle } from './matrixes'
 

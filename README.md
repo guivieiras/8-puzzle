@@ -1,4 +1,6 @@
-8-puzzle
+# 8-puzzle
+
+Equipe: Guilherme Assing Vieira e Gabriel Saldanha
 
 ## Representação do estado
 
@@ -65,7 +67,7 @@ closedNodes.push(lower);
 openNodes = openNodes.filter(i => i != lower);
 ```
 A partir desse nodo de menor h + t, é retornado todas as matrizes possiveis a partir desse nodo e são adicionadas na fronteira apenas as que não estão na lista de nodos fechados.
-```
+```javascript
 let puzzles = lower.puzzle.getAllPossibleMatrixes();
 for (let m of puzzles) {
     if (closedNodes.filter(o => isEqual(o.puzzle.matrix, m.matrix)).length == 0) {
@@ -101,4 +103,62 @@ Uma heurística que utiliza ambas as anteriores.
 
 ### puzzle.js
 
-A classe onde se concentra todos os métodos de navegação pelo puzzle, desde movimentação, checagem de posições dos números,
+A classe onde se concentra todos os métodos de navegação pelo puzzle, desde movimentação, checagem de posições dos números e retorno da posição tendo como input um número.
+
+## Questão 7
+
+### Função de utilidade
+
+Como função de utilidade, um estado final pode ter 3 possibiliades diferentes:
+
+* Empate: 0
+* Vitória PC: 1
+* Vitória Player: -1
+
+### Função heurística: 
+
+A partir do estado, para cada peça do usuário, verificar quantas estão conectadas na verticao e na horizontal e somar na heurística. E para cada peça do computador, fazer a mesma verificação e subtrair da heurística, como exemplifica o seguinte codigo: 
+
+```javascript
+let matrix; // Matriz com os valores, -1 é usuário, 0 é vazio e +1 é o computador.
+let heuristic = 0; // Heurística para o computador, quanto mais próximo de 0 melhor para o pc
+for (let i = 0; i < matrix.length; i++){
+    for (let j = 0; j < matrix[i].lenght; j++){
+        if (matrix[i][j] == 1){
+            heuristic -= heuristic(matrix, i, j);
+        }
+        if (matrix[i][j] == -1){
+            heuristic += heuristic(matrix, i, j);
+        }
+    }
+}
+// Quantidade de peças juntas conectadas verticalmente e horizontalmente
+function heuristic(matrix, i, j){
+    ...
+}
+```
+Heurística com exemplo:
+```javascript
+[0, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 0,-1, 0, 0]
+[0, 0, 0, 0, 1, 0, 0]
+[0, 0, 0,-1, 1, 0, 0]
+
+```
+
+O primeiro -1 de cima pra baixo não tem nenhum -1 ao lado: soma nada
+
+Primeiro 1 de cima pra baixo tem um 1 conectado: subtrai 1
+
+Segundo 1 também está concetado com um 1: Subtrai 1
+
+-1 da linha de baixo não está concetado a nenhum -1: Soma nada
+
+Resultado: -2
+
+
+
+
+

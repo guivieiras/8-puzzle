@@ -7,7 +7,7 @@ export const solvedPuzzle = new Puzzle(
     ]);
 
 
-var lol = [new Puzzle(
+var wrongPuzzles = [new Puzzle(
     [
         [8, 3, 6],
         [1, 0, 2],
@@ -22,4 +22,4 @@ var lol = [new Puzzle(
         [4, 7, 8]
     ])]
 
-export const toSolvePuzzle = lol[0];
+export const toSolvePuzzle = wrongPuzzles[2];
