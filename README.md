@@ -2,6 +2,16 @@
 
 Equipe: Guilherme Assing Vieira e Gabriel Saldanha
 
+## Para executar:
+
+Abrir arquivo index.html e ver o console no browser.
+
+Para alterar a heurística, comentar ou descomentar as linhas no começo do arquivo tudo.js.
+
+Para mudar o puzzle que vai ser executado, na linha 176 do arquivo tudo.js ou criar outro.
+
+
+
 ## Representação do estado
 
 O estado é tem a estrutura de uma matriz, ou seja, um array de arrays:

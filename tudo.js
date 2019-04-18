@@ -1,4 +1,8 @@
-let heuristic = distanceToRightPlaceHeuristic
+let heuristic = distanceToRightPlaceHeuristic // Distancia até o lugar certo
+// let heuristic = noneHeuristic // Custo uniforme
+// let heuristic = bothHeuristic // Ambas juntas
+// let heuristic = quantityAtWrongPlaceHeuristic // Quantidade no lugar errado
+
 //Puzzle.js
 
 class Puzzle {
