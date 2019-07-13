@@ -225,10 +225,7 @@ function start() {
 		let code = document.getElementById('code')
 
 		print = text => {
-			if (!document) {
-				console.log(text)
-				return
-			}
+			console.log(text)
 			if (typeof text == 'object') {
 				text = JSON.stringify(text, null, 2)
 			}
@@ -238,6 +235,10 @@ function start() {
 		document.getElementById('h1').addEventListener('click', () => run(distanceToRightPlaceHeuristic))
 		document.getElementById('h2').addEventListener('click', () => run(quantityAtWrongPlaceHeuristic))
 		document.getElementById('none').addEventListener('click', () => run(noneHeuristic))
+		document.getElementById('limpar').addEventListener('click', () => {
+			code.innerText = ''
+			console.clear()
+		})
 	} catch (error) {
 		// Node
 
