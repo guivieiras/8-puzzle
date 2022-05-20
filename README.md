@@ -1,7 +1,3 @@
-# 8-puzzle
-
-Equipe: Guilherme Assing Vieira e Gabriel Saldanha
-
 ## Para executar:
 
 Abrir arquivo index.html e ver o console no browser.
